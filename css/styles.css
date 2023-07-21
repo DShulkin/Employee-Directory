@@ -63,7 +63,7 @@ h1 {
 .card {
     border: 2px solid #ddd;
     border-radius: 8px;
-    padding: 25px;
+    padding: 2rem;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -88,7 +88,10 @@ h1 {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
-    .card { gap: 15px; }
+    .card { 
+        gap: 15px;
+        padding: 1rem;
+    }
 
     .card .avatar { 
         border-radius: 50%;
