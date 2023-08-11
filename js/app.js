@@ -93,16 +93,14 @@ previousButton.addEventListener('click', () => {
         .querySelector('.modal-text-container')
         .getAttribute('data-index')
 
-    if (modalIndex === modalIndex) {
-        modalIndex--
-        displayModal(modalIndex)
-        // console.log(modalIndex)
+        if (modalIndex == 0)  {
+            modalIndex = 11
+            displayModal(modalIndex)
         
-    //NOT WORKING:
-    } else if (modalIndex === 0) {
-        modalIndex = 11
-        displayModal(modalIndex)
-    }
+        } else {
+            modalIndex--
+            displayModal(modalIndex)
+        }
 })  
 
 
@@ -112,33 +110,15 @@ nextButton.addEventListener('click', () => {
         .querySelector('.modal-text-container')
         .getAttribute('data-index')
 
-    if (modalIndex === modalIndex) {
-        modalIndex++
+    if (modalIndex == 11)  {
+        modalIndex = 0
         displayModal(modalIndex)
-        // console.log(modalIndex)
     
-    //NOT WORKING:
-    } else if (modalIndex === employees.length) {
-            modalIndex = 0
-            displayModal(modalIndex)
-        }
+    } else {
+        modalIndex++ 
+        displayModal(modalIndex)
+    }
 })
-
-
-//============================================================
-// CODE FOR MAKING AN ARRAY OUT OF ALL modalIndex VALUES
-// const modalIndex = document.querySelectorAll('[data-index]')
-// let modalIndexValues = [ ]
-// modalIndex.forEach(index => { 
-//     modalIndexValues.push(index.getAttribute('data-index'))
-//     console.log(typeof Number( modalIndexValues))   
-//     })
-//     modalIndexValues
-
-//     let [...indexValue] = modalIndexValues
-
-// console.log(typeof Number( modalIndexValues[0]))
-//============================================================
 
 
 // ------- COUNTER LOOP SEARCH FILTER -------
@@ -178,8 +158,3 @@ const searchFilter = () => {
 //   }
 //  searchBar.addEventListener('keyup', searchFilter)
 
-
-
-    // let modalContainer = document.querySelector('.modal-text-container')
-    // let index = modalContainer.getAttribute('data-index') 
-    // ================================================================
