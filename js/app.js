@@ -21,7 +21,7 @@ fetch(urlAPI)
 function displayEmployees(employeeData) {
     employees = employeeData
     let employeeHTML = ''
-    /* console.log(employees) */
+    //  console.log(employeeData) 
 
     employees.forEach((employee, index) => {
         let picture = employee.picture
@@ -45,11 +45,13 @@ function displayEmployees(employeeData) {
 
 /* function scoped variables take the information needed to be displayed in the modal from the employees array, at the index passed to the function 
 /* here I'm destructuring the employees array of objects ---- log employees[0] to view the employee object and employees[0].propertyName to view its value individually 
+/* in the destructuring process, the object: "location" has a nested object: "street" which I am destructuring from to get the name and number value for each employee
+      let { location: { street: { number: streetNumber, name: streetName } } } = employees[index]
 /* the date variable creates a new Date Object, based on the employee's date of birth */
 function displayModal(index) {
-    let { picture, name, email, location: { city, state, postcode }, phone, dob } = employees[index]
+    let { picture, name, email, location: { city, state, postcode, street: { number: streetNumber, name: streetName } }, phone, dob } = employees[index]
     let date = new Date(dob.date) 
-    /* console.log(employees[0]) */
+    // console.log(employees[0])    
 
     const modalHTML = `
         <div class="modal-text-container" data-index=${index}>
@@ -59,7 +61,7 @@ function displayModal(index) {
             <p class="address">${city}</p>
             <hr />
             <p>${phone}</p>
-            <p class="address">${city}, ${state} ${postcode}</p>
+            <p class="address">${streetNumber}, ${streetName}, ${city}, ${state} ${postcode}</p>
             <p>Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
         </div>
     `
@@ -74,12 +76,14 @@ gridContainer.addEventListener('click', e => {
     if( e.target !== gridContainer ) {
         const card = e.target.closest(".card")
         const index = card.getAttribute('data-index')
+        gridContainer.style.filter = "blur(2px)";
         displayModal(index)
     }
 })
 
 modalClose.addEventListener('click', () => {
     overlay.classList.add("hidden")
+    gridContainer.style.filter = "blur(0px)";
 })
 
 previousButton.addEventListener('click', () => {

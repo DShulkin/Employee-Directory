@@ -11,12 +11,12 @@ body {
 }
 
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgb(203 203 203 / 50%);
+    background: rgb(138 138 138 / 50%);
 }
 
 .modal {
@@ -38,6 +38,13 @@ body {
     background: none;
     border: none;
     padding: 0;
+    color: #9f9f9f;
+}
+
+.modal-close:hover,
+.previous:hover,
+.next:hover {
+    color:#b4b2b2;
 }
 
 .hidden {
@@ -117,7 +124,7 @@ input[type=text] {
     top: 75px;
     border: none;
     background: none;
-    color: #bababa;
+    color: #9f9f9f;
     cursor: pointer;
 }
 
